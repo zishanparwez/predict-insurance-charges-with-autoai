@@ -30,7 +30,7 @@ def predict():
 
         # NOTE: generate iam_token and retrieve ml_instance_id based on provided documentation
         header = {'Content-Type': 'application/json', 'Authorization': 'Bearer '
-                 + "<IAM-Token-goes-here>"}
+                 + "eyJraWQiOiIyMDIxMDUyMDE4MzYiLCJhbGciOiJSUzI1NiJ9.eyJpYW1faWQiOiJJQk1pZC02NjMwMDIzNkE4IiwiaWQiOiJJQk1pZC02NjMwMDIzNkE4IiwicmVhbG1pZCI6IklCTWlkIiwianRpIjoiMmI3ZjY0YTItYmRlNS00NDk3LTliODQtMTZhNWNkMGY4M2U5IiwiaWRlbnRpZmllciI6IjY2MzAwMjM2QTgiLCJnaXZlbl9uYW1lIjoiWmlzaGFuIiwiZmFtaWx5X25hbWUiOiJQYXJ3ZXoiLCJuYW1lIjoiWmlzaGFuIFBhcndleiIsImVtYWlsIjoiemlzaGFucGFyd2V6Nzg2QGdtYWlsLmNvbSIsInN1YiI6Inppc2hhbnBhcndlejc4NkBnbWFpbC5jb20iLCJhdXRobiI6eyJzdWIiOiJ6aXNoYW5wYXJ3ZXo3ODZAZ21haWwuY29tIiwiaWFtX2lkIjoiaWFtLTY2MzAwMjM2QTgiLCJuYW1lIjoiWmlzaGFuIFBhcndleiIsImdpdmVuX25hbWUiOiJaaXNoYW4iLCJmYW1pbHlfbmFtZSI6IlBhcndleiIsImVtYWlsIjoiemlzaGFucGFyd2V6Nzg2QGdtYWlsLmNvbSJ9LCJhY2NvdW50Ijp7ImJvdW5kYXJ5IjoiZ2xvYmFsIiwidmFsaWQiOnRydWUsImJzcyI6ImZjYTliNzAzZDFmOTRlMzJhY2ZlY2RkMjBiNjRhNzczIiwiZnJvemVuIjp0cnVlfSwiaWF0IjoxNjIzOTU0MzE0LCJleHAiOjE2MjM5NTc5MTQsImlzcyI6Imh0dHBzOi8vaWFtLmNsb3VkLmlibS5jb20vb2lkYy90b2tlbiIsImdyYW50X3R5cGUiOiJ1cm46aWJtOnBhcmFtczpvYXV0aDpncmFudC10eXBlOmFwaWtleSIsInNjb3BlIjoiaWJtIG9wZW5pZCIsImNsaWVudF9pZCI6ImRlZmF1bHQiLCJhY3IiOjEsImFtciI6WyJwd2QiXX0.cCBdTt4iPvK-xl8fNnIfFoXeI7mVRPJGFAyufSWMYVrNuraFAEffBQMr_GsVbnqAGqFZT7GigKjccxp_3QCX2dwemiicTU01wZ14rH3wuXqUMTKchN-zRiIfyHWZP3Z7DbgqXF67rqDxtXVROMG-sXsf-Do9sSmMSC0mFxqW8DQ9ZNxSysTgkBUg7jhfS8AHXtW6OBF2hzMLKhArIfnMHCi7tFNKBM-pD4bns56IXwDsqxxf-UCKRKym33CoSOioRweKq4GMfhyxREhxfqljHTE9vcXzoUPvS4ZVoeW761uQqRC_W4G3tSlkVW1XBaVosqCzQCFVPHrVG71-U6TJBg"}
 
         if(form.bmi.data == None): 
           python_object = []
@@ -45,8 +45,8 @@ def predict():
         # NOTE: manually define and pass the array(s) of values to be scored in the next line
         payload_scoring = {"input_data": [{"fields": ["age", "sex", "bmi",
           "children", "smoker", "region"], "values": userInput }]}
-
-        response_scoring = requests.post("https://us-south.ml.cloud.ibm.com/ml/v4/deployments/<deployment-id-goes-here>/predictions?version=2020-09-01", json=payload_scoring, headers=header)
+          
+        response_scoring = requests.post("https://eu-gb.ml.cloud.ibm.com/ml/v4/deployments/0bdff7e8-99a9-4bd0-83e4-17e51bb02dcd/predictions?version=2021-06-17", json=payload_scoring, headers=header)
 
         output = json.loads(response_scoring.text)
         print(output)
